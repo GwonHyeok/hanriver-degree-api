@@ -2,7 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-const port = process.env.OPENSHIFT_NODEJS_PORT || 80;
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 app.use(cors());
 
@@ -14,4 +15,4 @@ app.get('/', function(req, res, next) {
     .catch(err => next(err));
 });
 
-app.listen(port);
+app.listen(port, ipaddress);
